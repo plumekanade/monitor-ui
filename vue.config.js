@@ -3,13 +3,19 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     port: 8000,
-    proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:9000',
-        ws: true,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      }
-    },
-  },
+    // proxy: {
+    //   '/api': {
+    //     ws: true,
+    //     changeOrigin: true,
+    //     target: 'http://127.0.0.1:9000',
+    //     rewrite: (path) => path.replace(/^\/api/, '')
+    //   },
+    //   '/ws': {
+    //     ws: false,
+    //     changeOrigin: true,
+    //     target: 'ws://127.0.0.1:9898',
+    //     rewrite: (path) => path.replace(/^\/ws/, '')
+    //   }
+    // }
+  }
 })

@@ -1,18 +1,41 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="root-content">
+    <el-row>
+      <el-col v-for="url in urls" :key="url" :span="12">
+        <monitor-item :url="url" />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import {defineComponent, onMounted, reactive, toRefs} from 'vue'
+import MonitorItem from '@/components/MonitorItem.vue'
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
+    MonitorItem
   },
-});
+  setup() {
+    const state = reactive({
+      urls: []
+    })
+
+    onMounted(() => {
+      // TODO 获取设备对应连接地址列表
+    })
+
+    return {
+      ...toRefs(state)
+    }
+  }
+})
 </script>
+
+<style lang="scss" scoped>
+.root-content {
+  width: 100%;
+  height: 100%;
+}
+</style>
